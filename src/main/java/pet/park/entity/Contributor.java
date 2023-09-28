@@ -11,17 +11,17 @@ import java.util.Set;
 @Entity
 @Data
 public class Contributor {
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long contributorId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long contributorId;
 
-    private String contributorName;
+  private String contributorName;
 
-    @Column(unique = true)
-    private String contributorEmail;
+  @Column(unique = true)
+  private String contributorEmail;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @OneToMany(mappedBy = "contributor", cascade = CascadeType.ALL)
-    private Set<PetPark> petParks = new HashSet<>();
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @OneToMany(mappedBy = "contributor", cascade = CascadeType.ALL)
+  private Set<PetPark> petParks = new HashSet<>();
 }

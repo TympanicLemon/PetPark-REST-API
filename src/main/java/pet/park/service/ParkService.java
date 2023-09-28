@@ -13,39 +13,39 @@ import java.util.Objects;
 @Service
 public class ParkService {
 
-    @Autowired
-    private ContributorDAO contributorDAO;
+  @Autowired
+  private ContributorDAO contributorDAO;
 
-    @Transactional(readOnly = false)
-    public ContributorData saveContributor(ContributorData contributorData) {
-        Long contributorId = contributorData.getContributorId();
-        Contributor contributor = findOrCreateContributor(contributorId);
+  @Transactional(readOnly = false)
+  public ContributorData saveContributor(ContributorData contributorData) {
+    Long contributorId = contributorData.getContributorId();
+    Contributor contributor = findOrCreateContributor(contributorId);
 
-        setFieldsInContributor(contributor, contributorData);
-        return new ContributorData(contributorDAO.save(contributor));
+    setFieldsInContributor(contributor, contributorData);
+    return new ContributorData(contributorDAO.save(contributor));
+  }
+
+  private void setFieldsInContributor(Contributor contributor, ContributorData contributorData) {
+    contributor.setContributorEmail(contributorData.getContributorEmail());
+    contributor.setContributorName(contributorData.getContributorName());
+  }
+
+  private Contributor findOrCreateContributor(Long contributorId) {
+    Contributor contributor;
+
+    if (Objects.isNull(contributorId)) {
+      contributor = new Contributor();
+    } else {
+      contributor = findContributorById(contributorId);
     }
 
-    private void setFieldsInContributor(Contributor contributor, ContributorData contributorData) {
-        contributor.setContributorEmail(contributorData.getContributorEmail());
-        contributor.setContributorName(contributorData.getContributorName());
-    }
+    return contributor;
+  }
 
-    private Contributor findOrCreateContributor(Long contributorId) {
-        Contributor contributor;
-
-        if (Objects.isNull(contributorId)) {
-            contributor = new Contributor();
-        } else {
-            contributor = findContributorById(contributorId);
-        }
-
-        return contributor;
-    }
-
-    private Contributor findContributorById(Long contributorId) {
-        return contributorDAO.findById(contributorId)
-                .orElseThrow(() -> new NoSuchElementException(
-                "Contributor with ID=" + contributorId + " was not found"));
-    }
+  private Contributor findContributorById(Long contributorId) {
+    return contributorDAO.findById(contributorId)
+        .orElseThrow(() -> new NoSuchElementException(
+            "Contributor with ID=" + contributorId + " was not found"));
+  }
 
 }

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class PetParkApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(PetParkApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(PetParkApplication.class, args);
+  }
 }

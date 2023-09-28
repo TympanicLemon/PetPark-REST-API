@@ -11,13 +11,13 @@ import pet.park.service.ParkService;
 @RequestMapping("/pet_park")
 @Slf4j
 public class ParkController {
-    @Autowired
-    private ParkService parkService;
+  @Autowired
+  private ParkService parkService;
 
-    @PostMapping("/contributor")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public ContributorData insertContributor(@RequestBody ContributorData contributorData) {
-      log.info("Creating contributor {}", contributorData);
-      return parkService.saveContributor(contributorData);
-    }
+  @PostMapping("/contributor")
+  @ResponseStatus(code = HttpStatus.CREATED)
+  public ContributorData insertContributor(@RequestBody ContributorData contributorData) {
+    log.info("Creating contributor {}", contributorData);
+    return parkService.saveContributor(contributorData);
+  }
 }

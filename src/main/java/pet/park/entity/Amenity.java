@@ -11,14 +11,14 @@ import java.util.Set;
 @Entity
 @Data
 public class Amenity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long amenityId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long amenityId;
 
-    private String amenity;
+  private String amenity;
 
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "amenities")
-    private Set<PetPark> petParks = new HashSet<>();
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
+  @ManyToMany(mappedBy = "amenities")
+  private Set<PetPark> petParks = new HashSet<>();
 }

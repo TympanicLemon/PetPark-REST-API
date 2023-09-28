@@ -13,43 +13,43 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class ContributorData {
-    private Long contributorId;
-    private String contributorName;
-    private String contributorEmail;
-    private Set<PetParkResponse> petParks = new HashSet<>();
+  private Long contributorId;
+  private String contributorName;
+  private String contributorEmail;
+  private Set<PetParkResponse> petParks = new HashSet<>();
 
-    public ContributorData(Contributor contributor) {
-        contributorId = contributor.getContributorId();
-        contributorName = contributor.getContributorName();
-        contributorEmail = contributor.getContributorEmail();
+  public ContributorData(Contributor contributor) {
+    contributorId = contributor.getContributorId();
+    contributorName = contributor.getContributorName();
+    contributorEmail = contributor.getContributorEmail();
 
-        for(PetPark petPark: contributor.getPetParks()) {
-            petParks.add(new PetParkResponse(petPark));
-        }
+    for (PetPark petPark : contributor.getPetParks()) {
+      petParks.add(new PetParkResponse(petPark));
     }
+  }
 
-    @Data
-    @NoArgsConstructor
-    static class PetParkResponse {
-        private long petParkId;
-        private String parkName;
-        private String directions;
-        private String stateOrProvince;
-        private String country;
-        private GeoLocation geoLocation;
-        private Set<String> amenities = new HashSet<>();
+  @Data
+  @NoArgsConstructor
+  static class PetParkResponse {
+    private long petParkId;
+    private String parkName;
+    private String directions;
+    private String stateOrProvince;
+    private String country;
+    private GeoLocation geoLocation;
+    private Set<String> amenities = new HashSet<>();
 
-        PetParkResponse(PetPark petPark) {
-            petParkId = petPark.getPetParkId();
-            parkName = petPark.getPetParkName();
-            directions = getDirections();
-            stateOrProvince = petPark.getStateOrProvince();
-            country = petPark.getCountry();
-            geoLocation = new GeoLocation(petPark.getGeoLocation());
+    PetParkResponse(PetPark petPark) {
+      petParkId = petPark.getPetParkId();
+      parkName = petPark.getPetParkName();
+      directions = getDirections();
+      stateOrProvince = petPark.getStateOrProvince();
+      country = petPark.getCountry();
+      geoLocation = new GeoLocation(petPark.getGeoLocation());
 
-            for(Amenity amenity : petPark.getAmenities()) {
-                amenities.add(amenity.getAmenity());
-            }
-        }
+      for (Amenity amenity : petPark.getAmenities()) {
+        amenities.add(amenity.getAmenity());
+      }
     }
+  }
 }
