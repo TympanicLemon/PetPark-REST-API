@@ -13,7 +13,7 @@ import java.util.Set;
 public class PetPark {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long petParkId;
+  private Long petParkId;
 
   private String petParkName;
   private String directions;

@@ -31,7 +31,7 @@ public class ContributorData {
   @Data
   @NoArgsConstructor
   static class PetParkResponse {
-    private long petParkId;
+    private Long petParkId;
     private String parkName;
     private String directions;
     private String stateOrProvince;

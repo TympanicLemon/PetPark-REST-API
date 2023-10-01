@@ -13,7 +13,7 @@ import java.util.Set;
 public class Contributor {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long contributorId;
+  private Long contributorId;
 
   private String contributorName;
 
